@@ -84,19 +84,27 @@ class Coen:
     def build(self):
         self.build_tex()
 
+        os.system(
+            f"cd {self.get_intermediates_directory_path()} && pdflatex main.tex")
+
     def build_tex(self):
         self.build_content()
         info = json.load(open(self.get_coen_file_path()))
 
         with open(self.get_tex_file_path(), "w") as tex_file:
+            title = info.get('name', '').replace('_', '\\_')
+            author = info.get('author', '').replace('_', '\\_')
+
             tex_file.writelines(
                 [
                     f"\\documentclass{{article}}\n",
                     "\n",
-                    f"\\title{{{info.get('name', '')}}}\n",
-                    f"\\author{{{info.get('author', '')}}}\n",
+                    f"\\title{{{title}}}\n",
+                    f"\\author{{{author}}}\n",
+                    f"\\date{{{info.get('date', '')}}}\n",
                     "\n",
                     f"\\begin{{document}}\n",
+                    f"\\maketitle\n",
                     f"\n",
                     self.content,
                     f"\n",
