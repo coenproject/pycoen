@@ -1,1 +1,2 @@
-# pycoen
+# PyCoen (WIP)
+Coen, but in Python
