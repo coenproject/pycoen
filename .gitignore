@@ -1,0 +1,5 @@
+__pycache__
+*.pyc
+test_project/*
+!test_project/src/main.coen
+!test_project/coen.json
