@@ -90,23 +90,21 @@ class Coen:
 
     def build_tex(self):
         self.build_content()
-        info = json.load(open(self.get_coen_file_path()))
 
-        template_file_path = info.get("template")
-        template_file = open(template_file_path, "r")
+        self.set_info_variables()
+
+        template_file = open(self.variables.get("TEMPLATE"), "r")
         tex_content = template_file.read()
 
-        title = info.get("title", "").replace("_", "\\_")
-        author = info.get("author", "").replace("_", "\\_")
-        date = info.get("date", "")
-
         tex_content = tex_content.replace("$CONTENT", self.content)
-        self.variables["TITLE"] = title
-        self.variables["AUTHOR"] = author
-        self.variables["DATE"] = date
 
         for key, value in self.variables.items():
             tex_content = tex_content.replace("$" + key, value)
 
         with open(self.get_tex_file_path(), "w") as tex_file:
             tex_file.write(tex_content)
+
+    def set_info_variables(self):
+        info = json.load(open(self.get_coen_file_path()))
+        for key, value in info.items():
+            self.variables[key.upper()] = value

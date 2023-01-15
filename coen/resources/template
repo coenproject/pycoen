@@ -58,12 +58,6 @@
 }
 \pagestyle{nonfirststyle}
 
-\title{\large{\textbf{\course: \docname}\\
-\smallskip
-Prof.\ Joshua J.\ Daymude}}
-\author{}
-\date{\vspace{-15mm}}
-
 \title{\large{\textbf{$TITLE}}}
 \author{$AUTHOR}
 \date{$DATE}

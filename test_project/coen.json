@@ -1,5 +1,6 @@
 {
-  "title": "test_project",
-  "author": "Some Guy",
+  "title": "\\course: \\docname",
+  "author": "Prof. Joshua J. Daymude",
+  "date": "",
   "template": "./coen/resources/template"
 }
