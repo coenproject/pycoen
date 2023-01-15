@@ -1,0 +1,12 @@
+\documentclass{article}
+
+\title{$TITLE}
+\author{$AUTHOR}
+\date{$DATE}
+
+\begin{document}
+\maketitle
+
+$CONTENT
+
+\end{document}

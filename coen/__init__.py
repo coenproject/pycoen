@@ -91,23 +91,17 @@ class Coen:
         self.build_content()
         info = json.load(open(self.get_coen_file_path()))
 
-        with open(self.get_tex_file_path(), "w") as tex_file:
-            title = info.get('name', '').replace('_', '\\_')
-            author = info.get('author', '').replace('_', '\\_')
+        template_file = open("./coen/resources/template", "r")
+        tex_content = template_file.read()
 
-            tex_file.writelines(
-                [
-                    f"\\documentclass{{article}}\n",
-                    "\n",
-                    f"\\title{{{title}}}\n",
-                    f"\\author{{{author}}}\n",
-                    f"\\date{{{info.get('date', '')}}}\n",
-                    "\n",
-                    f"\\begin{{document}}\n",
-                    f"\\maketitle\n",
-                    f"\n",
-                    self.content,
-                    f"\n",
-                    f"\\end{{document}}\n",
-                ]
-            )
+        title = info.get("name", "").replace("_", "\\_")
+        author = info.get("author", "").replace("_", "\\_")
+        date = info.get("date", "")
+
+        tex_content = tex_content.replace("$CONTENT", self.content)
+        tex_content = tex_content.replace("$TITLE", title)
+        tex_content = tex_content.replace("$AUTHOR", author)
+        tex_content = tex_content.replace("$DATE", date)
+
+        with open(self.get_tex_file_path(), "w") as tex_file:
+            tex_file.write(tex_content)
