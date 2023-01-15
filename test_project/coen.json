@@ -1,4 +1,5 @@
 {
-  "name": "test_project",
-  "author": "Some Guy"
+  "title": "test_project",
+  "author": "Some Guy",
+  "template": "./coen/resources/template"
 }

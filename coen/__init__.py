@@ -8,20 +8,20 @@ class Coen:
         self.project_directory = project_directory
 
         self.content = ""
+        self.variables = dict()
 
         if not os.path.exists(self.project_directory):
             os.makedirs(self.project_directory)
 
         if not os.path.exists(self.get_coen_file_path()):
+            default_info_file = open("./coen/resources/info", "r")
+            default_info_contents = default_info_file.read()
+
+            default_info_contents = default_info_contents.replace(
+                "$TITLE", self.project_name)
+
             with open(self.get_coen_file_path(), "w") as f:
-                f.writelines(
-                    [
-                        "{\n",
-                        f"  \"name\": \"{self.project_name}\",\n",
-                        f"  \"author\": \"\"\n",
-                        "}\n",
-                    ]
-                )
+                f.write(default_info_contents)
 
         if not os.path.exists(self.get_src_directory_path()):
             os.makedirs(self.get_src_directory_path())
@@ -84,24 +84,29 @@ class Coen:
     def build(self):
         self.build_tex()
 
-        os.system(
-            f"cd {self.get_intermediates_directory_path()} && pdflatex main.tex")
+        for _ in range(2):
+            command = f"cd {self.get_intermediates_directory_path()} && pdflatex main.tex"
+            os.system(command)
 
     def build_tex(self):
         self.build_content()
         info = json.load(open(self.get_coen_file_path()))
 
-        template_file = open("./coen/resources/template", "r")
+        template_file_path = info.get("template")
+        template_file = open(template_file_path, "r")
         tex_content = template_file.read()
 
-        title = info.get("name", "").replace("_", "\\_")
+        title = info.get("title", "").replace("_", "\\_")
         author = info.get("author", "").replace("_", "\\_")
         date = info.get("date", "")
 
         tex_content = tex_content.replace("$CONTENT", self.content)
-        tex_content = tex_content.replace("$TITLE", title)
-        tex_content = tex_content.replace("$AUTHOR", author)
-        tex_content = tex_content.replace("$DATE", date)
+        self.variables["TITLE"] = title
+        self.variables["AUTHOR"] = author
+        self.variables["DATE"] = date
+
+        for key, value in self.variables.items():
+            tex_content = tex_content.replace("$" + key, value)
 
         with open(self.get_tex_file_path(), "w") as tex_file:
             tex_file.write(tex_content)

@@ -1,6 +1,70 @@
-\documentclass{article}
+% Stolen from Joshua J. Daymude
 
-\title{$TITLE}
+\documentclass[10pt]{article}
+\usepackage[margin=1in, headheight=13.6pt]{geometry}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+% Convenience commands.
+\newcommand{\bigo}[1]{\ensuremath{\mathcal{O}(#1)}}
+\newcommand{\bigbigo}[1]{\ensuremath{\mathcal{O}\left(#1\right)}}
+
+% Theorem styles.
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{definition}{Definition}
+
+% Comment commands.
+\newif\ifcomment
+\commenttrue    % Uncomment for blue/red comments.
+% \commentfalse  % Uncomment to preview document without comments (for checking paper length).
+\newcommand{\bluecomment}[1]{\ifcomment\color{blue} #1 \color{black}\fi}
+\newcommand{\redcomment}[1]{\ifcomment\color{red} #1 \color{black}\fi}
+\newcommand{\todo}[1]{\redcomment{TODO: #1}}
+
+% Assignment information.
+\newcommand{\course}{CSE 550}
+\newcommand{\semester}{Fall}
+\newcommand{\thisyear}{2022}
+\newcommand{\docname}{Final Exam Study Guide}
+\newcommand{\updated}{November 21, 2022}
+
+% Style the headers and footers.
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \lfoot{Last Updated: \updated}
+   \cfoot{Page \thepage\ of \pageref{LastPage}}
+   \rfoot{\copyright\ \thisyear, Joshua J. Daymude}
+   \renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{nonfirststyle}
+{
+   \fancyhf{}
+   \lhead{\course, \semester\ \thisyear}
+   \chead{\textbf{\docname}}
+   \rhead{Arizona State University}
+   \lfoot{Last Updated: \updated}
+   \cfoot{Page \thepage\ of \pageref{LastPage}}
+   \rfoot{\copyright\ \thisyear, Joshua J. Daymude}
+}
+\pagestyle{nonfirststyle}
+
+\title{\large{\textbf{\course: \docname}\\
+\smallskip
+Prof.\ Joshua J.\ Daymude}}
+\author{}
+\date{\vspace{-15mm}}
+
+\title{\large{\textbf{$TITLE}}}
 \author{$AUTHOR}
 \date{$DATE}
 
