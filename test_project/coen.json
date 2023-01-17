@@ -1,6 +1,10 @@
 {
-  "title": "\\course: \\docname",
+  "title": "$COURSE: $DOCUMENT",
   "author": "Prof. Joshua J. Daymude",
   "date": "",
-  "template": "./coen/resources/template"
+  "template": "./coen/resources/template",
+
+  "course": "CSE 550",
+  "document": "Final Exam Study Guide",
+  "session": "Fall 2022"
 }

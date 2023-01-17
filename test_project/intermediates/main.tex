@@ -30,13 +30,6 @@
 \newcommand{\redcomment}[1]{\ifcomment\color{red} #1 \color{black}\fi}
 \newcommand{\todo}[1]{\redcomment{TODO: #1}}
 
-% Assignment information.
-\newcommand{\course}{CSE 550}
-\newcommand{\semester}{Fall}
-\newcommand{\thisyear}{2022}
-\newcommand{\docname}{Final Exam Study Guide}
-\newcommand{\updated}{November 21, 2022}
-
 % Style the headers and footers.
 \fancypagestyle{firststyle}
 {
@@ -49,16 +42,16 @@
 \fancypagestyle{nonfirststyle}
 {
    \fancyhf{}
-   \lhead{\course, \semester\ \thisyear}
-   \chead{\textbf{\docname}}
+   \lhead{CSE 550, Fall 2022}
+   \chead{\textbf{Final Exam Study Guide}}
    \rhead{Arizona State University}
-   \lfoot{Last Updated: \updated}
+   % \lfoot{Last Updated: \updated}
    \cfoot{Page \thepage\ of \pageref{LastPage}}
-   \rfoot{\copyright\ \thisyear, Joshua J. Daymude}
+   % \rfoot{\copyright\ \thisyear, Joshua J. Daymude}
 }
 \pagestyle{nonfirststyle}
 
-\title{\large{\textbf{\course: \docname}}}
+\title{\large{\textbf{CSE 550: Final Exam Study Guide}}}
 \author{Prof. Joshua J. Daymude}
 \date{}
 
