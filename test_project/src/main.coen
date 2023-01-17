@@ -1,19 +1,7 @@
-! section Section 1
-! Some content
-
-! section Section 2
-! Some more content
-
-! subsection Subsection 2.1
-! Even more content
-
 This study guide is intended to help you prepare for the Final Exam.
 The exam is comprehensive, meaning it covers the full semester's material (as opposed to only the material covered after the Midterm Exam).
 The exam is closed book, closed notes, and will be completed in-person within the hour and fifty minute final exam period.
 As stated on the syllabus, this exam counts for 25\% of your final grade.
-
-
-
 
 !section Exam Questions and Topics
 
@@ -21,8 +9,6 @@ The exam will have six questions covering a comprehensive set of topics from the
 The rest of this section describes the format and topics of the six questions in hopes that it will help you study effectively and feel more prepared.
 By coincidence, the exam will be graded out of 100 points and you will have roughly 100 minutes to complete the exam.
 I have designed the exam such that you should be able to complete a problem worth $X$ points in roughly $X$ minutes, including some buffer time for thinking.
-
-
 
 !subsection Problem 1: Definitions, Problems, and Theorems [20 points]
 
@@ -65,8 +51,6 @@ Everything in this statement is logically compatible with any correct definition
 However, it lacks a very important detail: it does not require that the ordering of nodes $(v_1, \ldots, v_k)$ forms a connected path!
 This statement is thus incorrect because it is \textit{insufficient}; in this case, all shortest $(s,t)$-paths would satisfy this definition, but so would some non-$(s,t)$-paths.
 
-
-
 !subsection Problem 2: IP/LP Formulations [15 points]
 
 This problem tests your ability to formulate a combinatorial problem statement as an integer or linear program and understand various properties about the resulting IP/LP.
@@ -97,8 +81,6 @@ Based on the assignments and the Midterm Exam, here are some common mistakes to 
     These are not interchangeable.
 \end{itemize}
 
-
-
 !subsection Problem 3: Simplex and Duality [20 points]
 
 This problem tests your ability to translate between the different forms of an LP (general, standard, and canonical), initialize a simplex tableau, choose simplex pivots according to Bland's anticycling algorithm, write the dual of a primal LP, and derive optimal feasible solutions using complementary slackness.
@@ -116,8 +98,6 @@ The problem starts with an LP in general form. You will then be asked to do five
     \item Given the optimal solution to the original LP and the corrected dual from part (d), use complementary slackness to find the optimal solution to the dual LP.
 \end{enumerate}
 
-
-
 !subsection Problem 4: Network Flows and Cuts [15 points]
 
 This problem tests your understanding of network flows and the polynomial-time algorithms used to compute them.
@@ -134,15 +114,11 @@ You will then be asked to do three things:
     For example, if the graph quantity were the shortest path length, this modification would need to also return the shortest path.
 \end{enumerate}
 
-
-
 !subsection Problem 5: Matchings [15 points]
 
 This problem tests your understanding of matchings and your mastery over the theoretical results we proved about them.
 Specifically, you will be asked to prove one of the following three results about matchings: Hall's Theorem (Lecture 3 proof supplement) or Problem 1 or 2 from Assignment 5 (not the extra credit).
 Any supporting lemmas or theorems for those proofs will be stated in the problem to be used without reproof.
-
-
 
 !subsection Problem 6: NP-Completeness [15 points]
 
@@ -170,9 +146,6 @@ Recall from Lecture 4 that your proof that $\Pi$ is NP-complete should follow th
     \item Argue that $I$ is a \textsc{Yes}-instance of $\Pi'$ if and only if $f(I)$ is a \textsc{Yes}-instance of $\Pi$.
     Depending on the reduction, this can either be done in two parts (first considering $I$ is a \textsc{Yes}-instance of $\Pi'$ and proving $f(I)$ is a \textsc{Yes}-instance of $\Pi$; then doing the same for the reverse direction) or by showing some if-and-only-if relationship all the way through.
 \end{enumerate}
-
-
-
 
 !section Frequently Asked Questions
 

@@ -34,18 +34,15 @@
 \fancypagestyle{firststyle}
 {
    \fancyhf{}
-   \lfoot{Last Updated: \updated}
    \cfoot{Page \thepage\ of \pageref{LastPage}}
-   \rfoot{\copyright\ \thisyear, Joshua J. Daymude}
    \renewcommand{\headrulewidth}{0pt}
 }
 \fancypagestyle{nonfirststyle}
 {
    \fancyhf{}
    \lhead{$COURSE, $SESSION}
-   \chead{\textbf{$DOCUMENT}}
-   \rhead{Arizona State University}
    \cfoot{Page \thepage\ of \pageref{LastPage}}
+   \rhead{\textbf{$DOCUMENT}}
 }
 \pagestyle{nonfirststyle}
 
@@ -55,6 +52,8 @@
 
 \begin{document}
 \maketitle
+
+\thispagestyle{firststyle}
 
 $CONTENT
 
