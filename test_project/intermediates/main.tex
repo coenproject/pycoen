@@ -41,8 +41,9 @@
 {
    \fancyhf{}
    \lhead{CSE 550, Fall 2022}
+   \chead{\textbf{Final Exam Study Guide}}
+   \rhead{Prof. Joshua J. Daymude}
    \cfoot{Page \thepage\ of \pageref{LastPage}}
-   \rhead{\textbf{Final Exam Study Guide}}
 }
 \pagestyle{nonfirststyle}
 
@@ -77,8 +78,8 @@ False statements can be incorrect because they are logically incompatible with t
 For example, consider the following correct definition:
 
 \begin{definition}[Correct]
-    Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that $(v_i, v_{i+1}) \in E$ for all $1 \leq i < n$ and, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
-    \[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) \leq \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
+Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that $(v_i, v_{i+1}) \in E$ for all $1 \leq i < n$ and, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
+\[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) \leq \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
 \end{definition}
 
 This is a correct definition of a shortest $(s,t)$-path.
@@ -90,8 +91,8 @@ This changes the statement but not the correctness of the definition.
 On the other hand, consider the following incorrect definition:
 
 \begin{definition}[Incompatible]
-    Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that $(v_i, v_{i+1}) \in E$ for all $1 \leq i < n$ and, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
-    \[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) > \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
+Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that $(v_i, v_{i+1}) \in E$ for all $1 \leq i < n$ and, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
+\[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) > \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
 \end{definition}
 
 All that has changed is the direction of the inequality in comparing path lengths: from $\leq$ to $>$.
@@ -100,8 +101,8 @@ We are no longer defining a shortest $(s,t)$-path, but a longest one.
 Consider another way a definition could be incorrect:
 
 \begin{definition}[Insufficient]
-    Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
-    \[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) \leq \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
+Given an undirected graph $G = (V, E)$ with edge weights $w : E \to \mathbb{R}_{\geq 0}$ and nodes $s, t \in V$, a \underline{shortest $(s,t)$-path} in $G$ is an ordering of some subset of nodes $(s = v_1, v_2, \ldots, v_k = t)$ such that, for every other such $(s,t)$-path $(s = u_1, u_2, \ldots, u_\ell = t)$, we have
+\[\sum_{i=1}^{k-1} w((v_i, v_{i+1})) \leq \sum_{i=1}^{\ell - 1} w((u_i, u_{i+1}))\]
 \end{definition}
 
 Everything in this statement is logically compatible with any correct definition.
@@ -115,27 +116,27 @@ This problem will open with a statement of one of the following combinatorial pr
 Note that you have seen all of these problems (and most of their IP/LP formulations) in the lecture slides, proof supplements, or assignments.
 You will then be asked to do three things:
 \begin{enumerate}[label=(\alph*)]
-    \item Write an IP for the combinatorial problem.
-    Unlike on the Midterm Exam where you were asked one part at a time (variables, objective function, and constraints), you will write the full IP and some explanation of the important details (how are the variables defined? what do the constraints mean?).
+\item Write an IP for the combinatorial problem.
+Unlike on the Midterm Exam where you were asked one part at a time (variables, objective function, and constraints), you will write the full IP and some explanation of the important details (how are the variables defined? what do the constraints mean?).
 
-    \item Count the number of constraints in your IP (asymptotically), \textit{excluding} integrality constraints.
+\item Count the number of constraints in your IP (asymptotically), \textit{excluding} integrality constraints.
 
-    \item Consider some small modification of the combinatorial problem and explain how it would change your IP formulation from part (a).
+\item Consider some small modification of the combinatorial problem and explain how it would change your IP formulation from part (a).
 \end{enumerate}
 Based on the assignments and the Midterm Exam, here are some common mistakes to avoid.
 \begin{itemize}
-    \item Make sure your IP has all its parts: an objective function, constraints, and integrality constraints.
-    Forgetting to write any of these leaves points on the table.
+\item Make sure your IP has all its parts: an objective function, constraints, and integrality constraints.
+Forgetting to write any of these leaves points on the table.
 
-    \item Don't include your integrality constraints when counting the number of constraints in your IP.
-    The purpose of this question is to figure out what $m$ is for your $m \times n$ constraint matrix $A$.
+\item Don't include your integrality constraints when counting the number of constraints in your IP.
+The purpose of this question is to figure out what $m$ is for your $m \times n$ constraint matrix $A$.
 
-    \item In a constraint, the range of a sum is not the same thing as a quantifier for the constraint.
-    Specifically, the following constraints are not the same:
-    \[\sum_{x \in X} f(x) = b \quad\quad\text{vs.}\quad\quad f(x) = b \quad \forall x \in X\]
-    On the left, we have a single constraint that says ``when we add up $f(x)$ for all $x \in X$, the sum should equal $b$''.
-    On the right, we have $|X|$ separate constraints that say ``$f(x)$ should equal $b$'' when considering each $x \in X$ individually.
-    These are not interchangeable.
+\item In a constraint, the range of a sum is not the same thing as a quantifier for the constraint.
+Specifically, the following constraints are not the same:
+\[\sum_{x \in X} f(x) = b \quad\quad\text{vs.}\quad\quad f(x) = b \quad \forall x \in X\]
+On the left, we have a single constraint that says ``when we add up $f(x)$ for all $x \in X$, the sum should equal $b$''.
+On the right, we have $|X|$ separate constraints that say ``$f(x)$ should equal $b$'' when considering each $x \in X$ individually.
+These are not interchangeable.
 \end{itemize}
 
 \subsection{Problem 3: Simplex and Duality [20 points]}
@@ -143,16 +144,16 @@ Based on the assignments and the Midterm Exam, here are some common mistakes to 
 This problem tests your ability to translate between the different forms of an LP (general, standard, and canonical), initialize a simplex tableau, choose simplex pivots according to Bland's anticycling algorithm, write the dual of a primal LP, and derive optimal feasible solutions using complementary slackness.
 The problem starts with an LP in general form. You will then be asked to do five things:
 \begin{enumerate}[label=(\alph*)]
-    \item Write the LP in standard form.
+\item Write the LP in standard form.
 
-    \item Write the initial tableau for the LP's standard form using your answer from part (a).
+\item Write the initial tableau for the LP's standard form using your answer from part (a).
 
-    \item Given a tableau from the simplex execution on this LP, identify the pivot that would be chosen by Bland's anticycling algorithm.
-    Succinctly explain why that pivot is chosen.
+\item Given a tableau from the simplex execution on this LP, identify the pivot that would be chosen by Bland's anticycling algorithm.
+Succinctly explain why that pivot is chosen.
 
-    \item Given an incorrect dual of the original LP (\textit{not} of the LP in standard form!), circle and fix the mistakes or write a corrected dual.
+\item Given an incorrect dual of the original LP (\textit{not} of the LP in standard form!), circle and fix the mistakes or write a corrected dual.
 
-    \item Given the optimal solution to the original LP and the corrected dual from part (d), use complementary slackness to find the optimal solution to the dual LP.
+\item Given the optimal solution to the original LP and the corrected dual from part (d), use complementary slackness to find the optimal solution to the dual LP.
 \end{enumerate}
 
 \subsection{Problem 4: Network Flows and Cuts [15 points]}
@@ -163,12 +164,12 @@ Specifically, the problem will begin by defining some \textit{graph quantity} of
 For example, the shortest path length of a graph is a graph quantity.
 You will then be asked to do three things:
 \begin{enumerate}[label=(\alph*)]
-    \item Describe a polynomial-time algorithm, in words or pseudocode, that takes as input the directed graph $G = (V, E)$ and computes the desired graph quantity for $G$.
+\item Describe a polynomial-time algorithm, in words or pseudocode, that takes as input the directed graph $G = (V, E)$ and computes the desired graph quantity for $G$.
 
-    \item State and briefly justify the running time of your algorithm.
+\item State and briefly justify the running time of your algorithm.
 
-    \item Make a small modification to your algorithm such that it not only computes the desired graph quantity but also the corresponding graph structure.
-    For example, if the graph quantity were the shortest path length, this modification would need to also return the shortest path.
+\item Make a small modification to your algorithm such that it not only computes the desired graph quantity but also the corresponding graph structure.
+For example, if the graph quantity were the shortest path length, this modification would need to also return the shortest path.
 \end{enumerate}
 
 \subsection{Problem 5: Matchings [15 points]}
@@ -185,51 +186,52 @@ Note that you have seen all of these problems' proofs of NP-completeness in eith
 You may reduce from any known NP-complete problem covered in the Lecture 4 proof supplement.
 Recall from Lecture 4 that your proof that $\Pi$ is NP-complete should follow these steps:
 \begin{enumerate}
-    \item Show $\Pi$ is in NP by guess-and-check verifying any \textsc{Yes}-instance in polynomial time.
-    Remember that many decision problems are phrased as ``Is there an $x$ that satisfies condition $y$?''.
-    Usually, showing $\Pi$ is in NP is as simple as guessing the right $x$ and checking that it satisfies $y$.
-    Don't forget to argue why the check can be done in polynomial time!
+\item Show $\Pi$ is in NP by guess-and-check verifying any \textsc{Yes}-instance in polynomial time.
+Remember that many decision problems are phrased as ``Is there an $x$ that satisfies condition $y$?''.
+Usually, showing $\Pi$ is in NP is as simple as guessing the right $x$ and checking that it satisfies $y$.
+Don't forget to argue why the check can be done in polynomial time!
 
-    \item State the reduction $\Pi' \leq_p \Pi$ that you intend to prove, for some known NP-complete problem $\Pi'$.
-    In the proof supplement, I usually say ``To show $\Pi$ is NP-complete, we prove that $\Pi' \leq_p \Pi$, where $\Pi'$ is a known NP-complete problem.''
+\item State the reduction $\Pi' \leq_p \Pi$ that you intend to prove, for some known NP-complete problem $\Pi'$.
+In the proof supplement, I usually say ``To show $\Pi$ is NP-complete, we prove that $\Pi' \leq_p \Pi$, where $\Pi'$ is a known NP-complete problem.''
 
-    \item Explain how you transform any instance $I$ of $\Pi'$ into the constructed instance $f(I)$ of $\Pi$.
-    Remember that this \textit{always} starts with ``Consider any instance of $\Pi'$'' (not of $\Pi$!), with details about what that instance looks like.
-    You can explain this transformation in words or in pseudocode steps.
+\item Explain how you transform any instance $I$ of $\Pi'$ into the constructed instance $f(I)$ of $\Pi$.
+Remember that this \textit{always} starts with ``Consider any instance of $\Pi'$'' (not of $\Pi$!), with details about what that instance looks like.
+You can explain this transformation in words or in pseudocode steps.
 
-    \item Succinctly argue that your reduction $f$ can be computed in polynomial time.
-    This usually is as simple as counting the number of operations or entities you construct in $f$ and observing that that number is a polynomial in the size of the original instance.
+\item Succinctly argue that your reduction $f$ can be computed in polynomial time.
+This usually is as simple as counting the number of operations or entities you construct in $f$ and observing that that number is a polynomial in the size of the original instance.
 
-    \item Argue that $I$ is a \textsc{Yes}-instance of $\Pi'$ if and only if $f(I)$ is a \textsc{Yes}-instance of $\Pi$.
-    Depending on the reduction, this can either be done in two parts (first considering $I$ is a \textsc{Yes}-instance of $\Pi'$ and proving $f(I)$ is a \textsc{Yes}-instance of $\Pi$; then doing the same for the reverse direction) or by showing some if-and-only-if relationship all the way through.
+\item Argue that $I$ is a \textsc{Yes}-instance of $\Pi'$ if and only if $f(I)$ is a \textsc{Yes}-instance of $\Pi$.
+Depending on the reduction, this can either be done in two parts (first considering $I$ is a \textsc{Yes}-instance of $\Pi'$ and proving $f(I)$ is a \textsc{Yes}-instance of $\Pi$; then doing the same for the reverse direction) or by showing some if-and-only-if relationship all the way through.
 \end{enumerate}
 
 \section{Frequently Asked Questions}
 
 \begin{itemize}
-    \item \textbf{What format is the exam?}
-    The exam will be pen-and-paper, closed book and closed notes.
-    You will have roughly 100 minutes to complete the exam.
-    Details about the question topics are given above.
+\item \textbf{What format is the exam?}
+The exam will be pen-and-paper, closed book and closed notes.
+You will have roughly 100 minutes to complete the exam.
+Details about the question topics are given above.
 
-    \item \textbf{Is there a practice exam we can use to study?}
-    No, this document is the complete study guide.
-    If you want, you can try formulating and answering questions following the topics given above.
+\item \textbf{Is there a practice exam we can use to study?}
+No, this document is the complete study guide.
+If you want, you can try formulating and answering questions following the topics given above.
 
-    \item \textbf{Can I bring a cheat sheet to the exam?}
-    No.
+\item \textbf{Can I bring a cheat sheet to the exam?}
+No.
 
-    \item \textbf{Will there be a retake opportunity like we had for the Midterm Exam?}
-    No.
+\item \textbf{Will there be a retake opportunity like we had for the Midterm Exam?}
+No.
 
-    % \item \textbf{Will there be proofs on the exam?}
-    % You are responsible for being able to prove any theorem in the proof supplements marked with a $(*)$ or any reasonably short result from your assignments.
-    % Due to the time constraints of the exam, I will not ask you to prove any totally new statements.
+% \item \textbf{Will there be proofs on the exam?}
+% You are responsible for being able to prove any theorem in the proof supplements marked with a $(*)$ or any reasonably short result from your assignments.
+% Due to the time constraints of the exam, I will not ask you to prove any totally new statements.
 
-    % \item \textbf{Will there be long simplex executions on the exam?}
-    % Not full executions.
-    % I am mindful of your time limitations when crafting the exam.
-    % Manually carrying out many pivots and row operations is time consuming and error prone; if simplex is on the exam, the question will respect your time.
+% \item \textbf{Will there be long simplex executions on the exam?}
+% Not full executions.
+% I am mindful of your time limitations when crafting the exam.
+% Manually carrying out many pivots and row operations is time consuming and error prone; if simplex is on the exam, the question will respect your time.
 \end{itemize}
+
 
 \end{document}

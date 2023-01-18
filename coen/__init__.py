@@ -70,7 +70,7 @@ class Coen:
         with open(self.get_main_file_path(), "r") as main_file:
             lines = main_file.readlines()
             for line in lines:
-                self.current_statement = line
+                self.current_statement = line.strip() + "\n"
 
                 match self.current_statement[0]:
                     case "!":

@@ -41,8 +41,9 @@
 {
    \fancyhf{}
    \lhead{$COURSE, $SESSION}
+   \chead{\textbf{$DOCUMENT}}
+   \rhead{$AUTHOR}
    \cfoot{Page \thepage\ of \pageref{LastPage}}
-   \rhead{\textbf{$DOCUMENT}}
 }
 \pagestyle{nonfirststyle}
 
