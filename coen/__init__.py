@@ -13,16 +13,6 @@ class Coen:
         if not os.path.exists(self.project_directory):
             os.makedirs(self.project_directory)
 
-        if not os.path.exists(self.get_coen_file_path()):
-            default_info_file = open("./coen/resources/info", "r")
-            default_info_contents = default_info_file.read()
-
-            default_info_contents = default_info_contents.replace(
-                "$TITLE", self.project_name)
-
-            with open(self.get_coen_file_path(), "w") as f:
-                f.write(default_info_contents)
-
         if not os.path.exists(self.get_src_directory_path()):
             os.makedirs(self.get_src_directory_path())
 
@@ -32,10 +22,6 @@ class Coen:
 
         if not os.path.exists(self.get_intermediates_directory_path()):
             os.makedirs(self.get_intermediates_directory_path())
-
-    def get_coen_file_path(self):
-        coen_file_path = os.path.join(self.project_directory, "coen.json")
-        return coen_file_path
 
     def get_intermediates_directory_path(self):
         intermediates_directory_path = os.path.join(
@@ -66,12 +52,12 @@ class Coen:
             case "set":
                 self.variables[self.arguments[0]] = ' '.join(
                     self.arguments[1:])
+            case "import":
+                pass
             case _:
                 print(f"Unknown Command: {self.current_command}")
 
     def build_content(self):
-        self.set_info_variables()
-
         lines = self.coen_contents.split("\n")
         for line in lines:
             self.current_statement = line.strip() + "\n"
@@ -105,7 +91,7 @@ class Coen:
             for line in lines:
                 self.current_statement = line.strip() + "\n"
 
-                if self.current_statement.startswith("!import"):
+                if self.current_statement.startswith("!import "):
                     self.current_command = self.current_statement.split()[
                         0][1:]
                     self.arguments = self.current_statement.split()[1:]
@@ -116,6 +102,33 @@ class Coen:
                 else:
                     current_content += self.current_statement
         return current_content
+
+    def compile(self, path):
+        with open(path, "r") as main_file:
+            lines = main_file.readlines()
+
+            for line in lines:
+                self.current_statement = line.strip() + "\n"
+
+                match self.current_statement[0]:
+                    case "!":
+                        self.current_command = self.current_statement.split()[
+                            0][1:]
+                        self.arguments = self.current_statement.split()[1:]
+                        self.execute_command()
+                    case _:
+                        self.content += self.current_statement
+
+                    # if self.current_statement.startswith("!import"):
+                    #     self.current_command = self.current_statement.split()[
+                    #         0][1:]
+                    #     self.arguments = self.current_statement.split()[1:]
+                    #     import_file_path = os.path.join(
+                    #         os.path.dirname(path), ' '.join(self.arguments))
+                    #     current_content += self.generate_combined_contents(
+                    #         import_file_path)
+                    # else:
+                    #     current_content += self.current_statement
 
     def build_tex(self):
         self.build_content()
@@ -132,8 +145,3 @@ class Coen:
 
         with open(self.get_tex_file_path(), "w") as tex_file:
             tex_file.write(tex_content)
-
-    def set_info_variables(self):
-        info = json.load(open(self.get_coen_file_path()))
-        for key, value in info.items():
-            self.variables[key.upper()] = value
