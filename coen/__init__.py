@@ -63,10 +63,15 @@ class Coen:
                 self.content += f"\\section{{{' '.join(self.arguments)}}}\n"
             case "subsection":
                 self.content += f"\\subsection{{{' '.join(self.arguments)}}}\n"
+            case "set":
+                self.variables[self.arguments[0]] = ' '.join(
+                    self.arguments[1:])
             case _:
                 print(f"Unknown Command: {self.current_command}")
 
     def build_content(self):
+        self.set_info_variables()
+
         with open(self.get_main_file_path(), "r") as main_file:
             lines = main_file.readlines()
             for line in lines:
@@ -91,12 +96,12 @@ class Coen:
     def build_tex(self):
         self.build_content()
 
-        self.set_info_variables()
-
         template_file = open(self.variables.get("TEMPLATE"), "r")
         tex_content = template_file.read()
 
         tex_content = tex_content.replace("$CONTENT", self.content)
+
+        print(self.variables)
 
         for key, value in self.variables.items():
             tex_content = tex_content.replace("$" + key, value)
