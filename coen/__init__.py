@@ -76,50 +76,11 @@ class Coen:
                         self.content += self.current_statement
 
     def build(self):
-        # self.coen_contents = self.generate_combined_contents(
-        #     self.get_main_file_path())
-
         self.build_tex()
 
         for _ in range(2):
             command = f"cd {self.get_intermediates_directory_path()} && pdflatex main.tex"
             os.system(command)
-
-    # def generate_combined_contents(self, path):
-    #     current_content = ""
-    #     with open(path, "r") as main_file:
-    #         lines = main_file.readlines()
-
-    #         for line in lines:
-    #             self.current_statement = line.strip() + "\n"
-
-    #             if self.current_statement.startswith("!import "):
-    #                 self.current_command = self.current_statement.split()[
-    #                     0][1:]
-    #                 self.arguments = self.current_statement.split()[1:]
-    #                 import_file_path = os.path.join(
-    #                     os.path.dirname(path), ' '.join(self.arguments))
-    #                 current_content += self.generate_combined_contents(
-    #                     import_file_path)
-    #             else:
-    #                 current_content += self.current_statement
-    #     return current_content
-
-    # def compile(self, path):
-    #     with open(path, "r") as main_file:
-    #         lines = main_file.readlines()
-
-    #         for line in lines:
-    #             self.current_statement = line.strip() + "\n"
-
-    #             match self.current_statement[0]:
-    #                 case "!":
-    #                     self.current_command = self.current_statement.split()[
-    #                         0][1:]
-    #                     self.arguments = self.current_statement.split()[1:]
-    #                     self.execute_command()
-    #                 case _:
-    #                     self.content += self.current_statement
 
     def build_tex(self):
         self.build_content(self.get_main_file_path())
