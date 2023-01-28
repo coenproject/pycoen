@@ -10,6 +10,8 @@ class Coen:
         self.content = ""
         self.variables = dict()
 
+        self.commands = dict()
+
         if not os.path.exists(self.project_directory):
             os.makedirs(self.project_directory)
 
@@ -45,11 +47,15 @@ class Coen:
 
     def execute_command(self):
         match self.current_command.lower():
-            case "section":
-                self.content += f"\\section{{{' '.join(self.arguments)}}}\n"
-            case "subsection":
-                self.content += f"\\subsection{{{' '.join(self.arguments)}}}\n"
+            case "def":
+                if self.arguments[0] in ["def", "set", "import"]:
+                    print(
+                        f"Error: Cannot define function '{self.arguments[0]}'. Name is reserved.")
+                self.commands[self.arguments[0]] = ' '.join(self.arguments[1:])
             case "set":
+                if self.arguments[0] in ["$ARG"]:
+                    print(
+                        f"Error: Cannot set variable '{self.arguments[0]}'. Name is reserved.")
                 self.variables[self.arguments[0]] = ' '.join(
                     self.arguments[1:])
             case "import":
@@ -57,7 +63,11 @@ class Coen:
                     os.path.dirname(self.current_file_path), ' '.join(self.arguments))
                 self.build_content(import_file_path)
             case _:
-                print(f"Unknown Command: {self.current_command}")
+                if self.current_command in self.commands:
+                    self.content += self.commands.get(self.current_command).replace(
+                        "$ARG", ' '.join(self.arguments)) + "\n"
+                else:
+                    print(f"Unknown Command: {self.current_command}")
 
     def build_content(self, file_path):
         with open(file_path, "r") as current_file:
