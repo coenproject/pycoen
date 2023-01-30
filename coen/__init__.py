@@ -12,6 +12,8 @@ class Coen:
 
         self.commands = dict()
 
+        self.conversion_files = set()
+
         if not os.path.exists(self.project_directory):
             os.makedirs(self.project_directory)
 
@@ -70,6 +72,12 @@ class Coen:
                     print(f"Unknown Command: {self.current_command}")
 
     def build_content(self, file_path):
+        if file_path in self.conversion_files:
+            print(
+                f"Error: Program contains import loops. Importing file {file_path} again.")
+            return
+        self.conversion_files.add(file_path)
+
         with open(file_path, "r") as current_file:
             lines = current_file.readlines()
             for line in lines:
@@ -84,6 +92,8 @@ class Coen:
                         self.execute_command()
                     case _:
                         self.content += self.current_statement
+
+        self.conversion_files.remove(file_path)
 
     def build(self):
         self.build_tex()
