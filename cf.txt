@@ -1,0 +1,9 @@
+Getting data from the contest
+Fetching data from the contest
+Processing data from the contest
+Done 500
+Done 1000
+Done 1500
+Done 2000
+Done 2500
+Done 3000

@@ -1,5 +1,6 @@
 import os
 import json
+import regex as re
 
 
 class Coen:
@@ -11,6 +12,7 @@ class Coen:
         self.variables = dict()
 
         self.commands = dict()
+        self.re = dict()
 
         self.conversion_files = set()
 
@@ -54,6 +56,12 @@ class Coen:
                     print(
                         f"Error: Cannot define function '{self.arguments[0]}'. Name is reserved.")
                 self.commands[self.arguments[0]] = ' '.join(self.arguments[1:])
+            case "defre":
+                if self.arguments[0] in ["def", "set", "import"]:
+                    print(
+                        f"Error: Cannot define function '{self.arguments[0]}'. Name is reserved.")
+
+                self.re[self.arguments[0]] = ' '.join(self.arguments[1:])
             case "set":
                 if self.arguments[0] in ["$ARG"]:
                     print(
@@ -91,6 +99,12 @@ class Coen:
                         self.arguments = self.current_statement.split()[1:]
                         self.execute_command()
                     case _:
+                        for regex, repl in self.re.items():
+                            print(regex, repl)
+
+                            pattern = re.compile(regex)
+                            self.current_statement = pattern.sub(
+                                repl, self.current_statement)
                         self.content += self.current_statement
 
         self.conversion_files.remove(file_path)
